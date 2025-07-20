@@ -11,6 +11,7 @@
         android:layout_width="391dp"
         android:layout_height="392dp"
         android:scaleType="centerCrop"
+        android:layout_marginTop="8dp"
         android:src="@drawable/intro2_img"/>
     <!-- headline TextView -->
     <TextView
@@ -27,8 +28,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:text="Through our marketplace, you can order fish feeds and we will deliver directly to your farm."
-        android:textColor="#555555"
-        android:textSize="21sp"
+        android:textColor="@color/gray600"
+        android:textSize="20sp"
         android:fontFamily="@font/regular"/>
     <!-- Bottom Button -->
     <RelativeLayout

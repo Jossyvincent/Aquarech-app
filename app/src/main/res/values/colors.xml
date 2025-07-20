@@ -6,4 +6,7 @@
 
     <color name="colorDarkBlue">#32b1cb</color>
     <color name="colorWhite">#fff</color>
+    <color name="primayBlue">#34B1CB</color>
+    <color name="black">#000</color>
+    <color name="gray600">#4B5563</color>
 </resources>

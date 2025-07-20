@@ -1,54 +1,51 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
     android:layout_height="match_parent"
-    android:background="@color/colorWhite">
+    android:orientation="vertical"
+    android:padding="16dp">
 
+    <!-- top image-->
     <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/appCompatImageView"
-        android:layout_width="390dp"
-        android:layout_height="374dp"
+        android:layout_width="391dp"
+        android:layout_height="392dp"
         android:src="@drawable/intro1_img"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:scaleType="centerCrop"
+        android:layout_marginTop="10dp"/>
 
+    <!--headline TextView -->
     <TextView
-        android:id="@+id/textView"
-        android:layout_width="387dp"
-        android:layout_height="131dp"
-        android:layout_marginTop="12dp"
-        android:fontFamily="@font/extra_bold"
-        android:padding="4dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:text="We help you improve your fish farming business."
-        android:textSize="30sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/appCompatImageView" />
+        android:textSize="32sp"
+        android:textColor="@color/black"
+        android:fontFamily="@font/extra_bold"
+        />
 
+    <!-- subText TextView -->
     <TextView
-        android:id="@+id/textView2"
-        android:layout_width="403dp"
-        android:layout_height="119dp"
-        android:layout_marginTop="16dp"
-        android:fontFamily="@font/bold_font"
-        android:padding="4dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:text="Keep track of the fish progress in your farm by monitoring the monthly feeding and growth of the fish."
-        android:textSize="29sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        android:textSize="20sp"
+        android:textColor="@color/gray600"
+        android:fontFamily="@font/regular"
+        android:layout_marginTop="10dp"/>
+    <!--bottom button -->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp">
 
-    <androidx.appcompat.widget.AppCompatImageView
-        android:layout_width="96dp"
-        android:layout_height="49dp"
-        android:layout_marginTop="24dp"
-        android:src="@drawable/nextbutton"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.053"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+        <androidx.appcompat.widget.AppCompatImageView
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_alignParentEnd="true"
+            android:scaleType="centerInside"
+            android:src="@drawable/nextbutton" />
+    </RelativeLayout>
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>
