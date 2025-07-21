@@ -13,10 +13,22 @@
         android:theme="@style/SplashScreenTheme"
         tools:targetApi="31">
         <activity
-            android:name=".ui.activities.OnboardingScreen"
-            android:exported="false" />
+            android:name=".ui.activities.register.RegisterScreenActivity"
+            android:exported="false"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize"/>
         <activity
-            android:name=".ui.activities.SplashScreenActivity"
+            android:name=".ui.activities.login.LoginScreenActivity"
+            android:exported="false"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize"/>
+        <activity
+            android:name=".ui.activities.start.IntroScreenActivity"
+            android:exported="false"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".ui.activities.start.SplashScreenActivity"
             android:exported="true"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustResize"

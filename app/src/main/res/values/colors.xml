@@ -9,4 +9,21 @@
     <color name="colorPrimaryBlue">#34B1CB</color>
     <color name="black">#000</color>
     <color name="gray600">#4B5563</color>
+    <color name="colorDotInactive">#E5E7EB</color>
+
+    <array name="arrayDotActive">
+        <item>@color/colorPrimaryBlue</item>
+        <item>@color/colorPrimaryBlue</item>
+        <item>@color/colorPrimaryBlue</item>
+    </array>
+
+    <array name="arrayDotInactive">
+        <item>@color/colorDotInactive</item>
+        <item>@color/colorDotInactive</item>
+        <item>@color/colorDotInactive</item>
+    </array>
+
+    <color name="colorEditTextSelected">#3B82F6</color>
+    <color name="colorEditTextNormal">#F3F4F6</color>
+    <color name="colorEditTextError">#DA412D</color>
 </resources>

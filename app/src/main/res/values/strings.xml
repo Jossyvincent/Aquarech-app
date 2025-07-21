@@ -9,4 +9,18 @@
     <string name="intro_3_subtext">Not sure about where you can sell your fish? Let us know when they are ready of harvesting and we will come do the work and pay you.</string>
     <string name="intro_2_header">Order feeds from anywhere directly from your phone.</string>
     <string name="intro_2_subtext">Through our marketplace, you can order fish feeds and we will deliver directly to your farm.</string>
+
+    <string name="create_account">Create Account</string>
+    <string name="already_member">Already a member?</string>
+    <string name="login">Log In</string>
+
+    <string name="welcome_back">Welcome Back</string>
+    <string name="enter_details">Please add your personal details to continue</string>
+    <string name="phone">Phone</string>
+    <string name="pass">Password</string>
+    <string name="forgot_pass">Forgot Password</string>
+    <string name="wrong_user_details">Wrong username &amp; password combination. Try again.</string>
+    <string name="sign_in">Sign In</string>
+    <string name="new_to_aquarech">New to Aquarech?</string>
+    <string name="join_today">Join Today</string>
 </resources>

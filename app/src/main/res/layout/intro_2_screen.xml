@@ -5,6 +5,12 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/skip_intro"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"/>
+
     <!-- Top image -->
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/intro_2_img"
@@ -35,6 +41,7 @@
            android:layout_height="wrap_content"
            android:text="@string/intro_2_subtext"
            android:textColor="@color/gray600"
+           android:textAppearance="@style/TextAppearance.AppCompat.Body1"
            android:layout_marginTop="@dimen/hw_10"
            android:lineSpacingExtra="@dimen/hw_5"/>
 

@@ -1,4 +1,4 @@
-package com.aquarech.farmer.ui.activities;
+package com.aquarech.farmer.ui.activities.start;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -17,7 +17,7 @@ public class SplashScreenActivity extends AppCompatActivity {
         setContentView(R.layout.activity_splash_screen);
 
         new Handler().postDelayed(() -> {
-            startActivity(new Intent(SplashScreenActivity.this, OnboardingScreen.class));
+            startActivity(new Intent(SplashScreenActivity.this, IntroScreenActivity.class));
             finish();
         }, Config.SPLASH_DELAY);
     }
