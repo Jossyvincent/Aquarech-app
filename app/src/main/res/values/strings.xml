@@ -4,4 +4,9 @@
     <string name="intro_1_header">We help you improve your fish farming business.</string>
     <string name="intro_1_sub_text">Keep track of the fish progress in your farm by monitoring the monthly feeding and growth of the fish.</string>
     <string name="skip">Skip</string>
+    <string name="intro3_btm_txt">Already a member? Log in</string>
+    <string name="intro_3_header">We provide a market for you to sell your fish</string>
+    <string name="intro_3_subtext">Not sure about where you can sell your fish? Let us know when they are ready of harvesting and we will come do the work and pay you.</string>
+    <string name="intro_2_header">Order feeds from anywhere directly from your phone.</string>
+    <string name="intro_2_subtext">Through our marketplace, you can order fish feeds and we will deliver directly to your farm.</string>
 </resources>

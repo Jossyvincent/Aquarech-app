@@ -1,48 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<androidx.appcompat.widget.LinearLayoutCompat
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="wrap_content"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="16dp">
-    
+    android:orientation="vertical">
+
     <!-- Top image -->
     <androidx.appcompat.widget.AppCompatImageView
-        android:layout_width="391dp"
-        android:layout_height="392dp"
+        android:id="@+id/intro_2_img"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
         android:scaleType="centerCrop"
-        android:layout_marginTop="8dp"
         android:src="@drawable/intro2_img"/>
-    <!-- headline TextView -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:text="Order feeds from anywhere directly from your phone."
-        android:textColor="#000000"
-        android:textSize="30sp"
-        android:fontFamily="@font/extra_bold_font"/>
-    <!--Subtext -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:text="Through our marketplace, you can order fish feeds and we will deliver directly to your farm."
-        android:textColor="@color/gray600"
-        android:textSize="20sp"
-        android:fontFamily="@font/regular"/>
-    <!-- Bottom Button -->
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp">
 
-        <androidx.appcompat.widget.AppCompatImageView
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:layout_alignParentEnd="true"
-            android:scaleType="centerInside"
-            android:src="@drawable/nextbutton" />
-    </RelativeLayout>
+    <!--bottom view -->
+   <androidx.appcompat.widget.LinearLayoutCompat
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:orientation="vertical"
+       android:padding="16dp">
 
-</LinearLayout>    
+       <!--headline -->
+       <androidx.appcompat.widget.AppCompatTextView
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:text="@string/intro_2_header"
+           android:textAppearance="@style/TextAppearance.AppCompat.Large"
+           android:textColor="@color/black"
+           android:fontFamily="@font/extra_bold"/>
+       <!--Subtext -->
+       <androidx.appcompat.widget.AppCompatTextView
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:text="@string/intro_2_subtext"
+           android:textColor="@color/gray600"
+           android:layout_marginTop="@dimen/hw_10"
+           android:lineSpacingExtra="@dimen/hw_5"/>
+
+   </androidx.appcompat.widget.LinearLayoutCompat>
+
+</androidx.appcompat.widget.LinearLayoutCompat>
