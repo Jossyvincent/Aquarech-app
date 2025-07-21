@@ -1,4 +1,4 @@
-package com.aquarech.farmer;
+package com.aquarech.farmer.ui.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -6,9 +6,10 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.content.Intent;
 
-public class SplashScreenActivity extends AppCompatActivity {
+import com.aquarech.farmer.R;
+import com.aquarech.farmer.utils.Config;
 
-    private static final int SPLASH_DELAY = 3000;
+public class SplashScreenActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -16,9 +17,8 @@ public class SplashScreenActivity extends AppCompatActivity {
         setContentView(R.layout.activity_splash_screen);
 
         new Handler().postDelayed(() -> {
-            Intent intent = new Intent(SplashScreenActivity.this,OnboardingScreen.class);
-            startActivity(intent);
+            startActivity(new Intent(SplashScreenActivity.this, OnboardingScreen.class));
             finish();
-        },SPLASH_DELAY);
+        }, Config.SPLASH_DELAY);
     }
 }

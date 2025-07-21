@@ -1,3 +1,7 @@
 <resources>
-    <string name="app_name">AquarechFarmer2</string>
+    <string name="app_name">Aquarech Farmer</string>
+
+    <string name="intro_1_header">We help you improve your fish farming business.</string>
+    <string name="intro_1_sub_text">Keep track of the fish progress in your farm by monitoring the monthly feeding and growth of the fish.</string>
+    <string name="skip">Skip</string>
 </resources>

@@ -1,51 +1,58 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<androidx.appcompat.widget.LinearLayoutCompat
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="wrap_content"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="16dp">
+    android:orientation="vertical">
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/skip_intro"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/skip"
+        android:textColor="@color/colorPrimaryBlue"
+        android:layout_gravity="end"
+        android:layout_marginEnd="@dimen/hw_16"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        android:textStyle="bold"
+        android:background="?selectableItemBackground"
+        android:clickable="true"
+        android:focusable="true"
+        android:layout_marginTop="@dimen/hw_30"/>
 
     <!-- top image-->
     <androidx.appcompat.widget.AppCompatImageView
-        android:layout_width="391dp"
-        android:layout_height="392dp"
+        android:id="@+id/intro_1_img"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
         android:src="@drawable/intro1_img"
-        android:scaleType="centerCrop"
-        android:layout_marginTop="10dp"/>
+        android:scaleType="centerCrop"/>
 
-    <!--headline TextView -->
-    <TextView
+    <!-- bottom view -->
+    <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="We help you improve your fish farming business."
-        android:textSize="32sp"
-        android:textColor="@color/black"
-        android:fontFamily="@font/extra_bold"
-        />
+        android:orientation="vertical"
+        android:padding="@dimen/activity_horizontal_margin">
+        <!-- headline -->
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/intro_1_header"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:textColor="@color/black"
+            android:fontFamily="@font/extra_bold"
+            android:lineSpacingExtra="@dimen/hw_3"/>
 
-    <!-- subText TextView -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Keep track of the fish progress in your farm by monitoring the monthly feeding and growth of the fish."
-        android:textSize="20sp"
-        android:textColor="@color/gray600"
-        android:fontFamily="@font/regular"
-        android:layout_marginTop="10dp"/>
-    <!--bottom button -->
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp">
-
-        <androidx.appcompat.widget.AppCompatImageView
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:layout_alignParentEnd="true"
-            android:scaleType="centerInside"
-            android:src="@drawable/nextbutton" />
-    </RelativeLayout>
-
-
-</LinearLayout>
+        <!-- subtext -->
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/intro_1_sub_text"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+            android:textColor="@color/gray600"
+            android:layout_marginTop="@dimen/hw_10"
+            android:lineSpacingExtra="@dimen/hw_5"/>
+    </androidx.appcompat.widget.LinearLayoutCompat>
+</androidx.appcompat.widget.LinearLayoutCompat>
