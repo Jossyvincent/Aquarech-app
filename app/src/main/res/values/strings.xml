@@ -25,11 +25,11 @@
     <string name="new_to_aquarech">New to Aquarech?</string>
     <string name="join_today">Join Today</string>
 
-    <string name="welcome_to_aquarech">WELCOME TO AQUARECH!</string>
+    <string name="welcome_to_aquarech">Welcome to Aquarech!</string>
     <string name="Create_username_Passwpord">Create your username and password</string>
     <string name="terms">By creating your account, you agree to Aquarech's</string>
     <string name="terms1">Terms of service </string>
     <string name="terms2">Privacy and policy</string>
     <string name="connecctor">&amp;</string>
-
+    <string name="agree_to_terms">By creating your account, you agree to Aquarech\'s <br /><u>Terms of Service</u> &amp; <u>Privacy Policy</u></string>
 </resources>

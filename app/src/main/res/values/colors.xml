@@ -26,4 +26,5 @@
     <color name="colorEditTextSelected">#3B82F6</color>
     <color name="colorEditTextNormal">#F3F4F6</color>
     <color name="colorEditTextError">#DA412D</color>
+    <color name="colorIntroDesc">#4B5563</color>
 </resources>
