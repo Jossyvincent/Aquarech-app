@@ -66,6 +66,7 @@
     <dimen name="hw_300">300dp</dimen>
     <dimen name="hw_350">350dp</dimen>
     <dimen name="hw_450">450dp</dimen>
+    <dimen name="neg">-20dp</dimen>
 
     <dimen name="small_text_size">12sp</dimen>
     <dimen name="fw_7">7sp</dimen>
