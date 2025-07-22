@@ -35,4 +35,8 @@
     <string name="agree_to_terms">By creating your account, you agree to Aquarech\'s <br /><u>Terms of Service</u> &amp; <u>Privacy Policy</u></string>
     <string name="reset_password_text">Please enter the last phone number that you can remember that you might have used to register</string>
     <string name="reset_password_text1">We will send you a password reset link to this number</string>
+
+    <string name="input_err_msg">Field is required</string>
+    <string name="invalid_phone_msg">Enter a valid phone number</string>
+    <string name="invalid_pwd_msg">Password must be at least eight characters</string>
 </resources>
