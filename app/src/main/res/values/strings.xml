@@ -18,9 +18,18 @@
     <string name="enter_details">Please add your personal details to continue</string>
     <string name="phone">Phone</string>
     <string name="pass">Password</string>
+    <string name="confirm_password">Confirm Password</string>
     <string name="forgot_pass">Forgot Password</string>
     <string name="wrong_user_details">Wrong username &amp; password combination. Try again.</string>
     <string name="sign_in">Sign In</string>
     <string name="new_to_aquarech">New to Aquarech?</string>
     <string name="join_today">Join Today</string>
+
+    <string name="welcome_to_aquarech">WELCOME TO AQUARECH!</string>
+    <string name="Create_username_Passwpord">Create your username and password</string>
+    <string name="terms">By creating your account, you agree to Aquarech's</string>
+    <string name="terms1">Terms of service </string>
+    <string name="terms2">Privacy and policy</string>
+    <string name="connecctor">&amp;</string>
+
 </resources>
