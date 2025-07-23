@@ -1,6 +1,7 @@
 package com.aquarech.farmer.ui.activities.start;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.Html;
 import android.view.LayoutInflater;
@@ -15,6 +16,9 @@ import androidx.viewpager.widget.PagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
 import com.aquarech.farmer.R;
+import com.aquarech.farmer.app.PreferenceManager;
+import com.aquarech.farmer.ui.activities.login.LoginScreenActivity;
+import com.aquarech.farmer.ui.activities.register.RegisterScreenActivity;
 
 public class IntroScreenActivity extends AppCompatActivity {
     ViewPager viewPager;
@@ -51,6 +55,24 @@ public class IntroScreenActivity extends AppCompatActivity {
         myIntroPagerAdapter = new IntroPagerAdapter();
         viewPager.setAdapter(myIntroPagerAdapter);
         viewPager.addOnPageChangeListener(viewPagerPageChangeListener);
+
+        // button event listener to login screen
+        login.setOnClickListener(view ->{
+           PreferenceManager.setHasSeenIntro(true);
+            Intent intent = new Intent(IntroScreenActivity.this, LoginScreenActivity.class);
+            startActivity(intent);
+            finish();
+
+        });
+        // listener to register activity
+        create.setOnClickListener(view ->{
+            PreferenceManager.setHasSeenIntro(true);
+            Intent intent = new Intent(IntroScreenActivity.this, RegisterScreenActivity.class);
+            startActivity(intent);
+            finish();
+        });
+
+
     }
 
     ViewPager.OnPageChangeListener viewPagerPageChangeListener = new ViewPager.OnPageChangeListener() {

@@ -10,4 +10,9 @@ public class Config {
     public static final Pattern KENYAN_PHONE_PATTERN = Pattern.compile(
             "^(?:\\+254|254|0)?7\\d{8}$"
     );
+    // preferenceManager constants
+      public static final String PREF_NAME = "aquarech_prefs";
+      public static final String KEY_HAS_SEEN_INTRO = "has_seen_intro";
+
+
 }

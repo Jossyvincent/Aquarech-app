@@ -25,5 +25,8 @@ public class ForgotPasswordActivity extends AppCompatActivity {
         //instantiating widgets
         submit = findViewById(R.id.create_account);
         phone = findViewById(R.id.phone_input);
+
+        // button event listener
+
     }
 }
