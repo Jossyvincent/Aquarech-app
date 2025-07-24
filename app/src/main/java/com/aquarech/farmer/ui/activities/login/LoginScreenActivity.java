@@ -56,7 +56,7 @@ public class LoginScreenActivity extends AppCompatActivity {
                 phoneNumber.requestFocus();
                 return;
             }
-            else if(Utils.isPhoneNoValid(phone)){
+            else if(!Utils.isValidPhoneNumber(phone)){
                 phoneNumberInputLayout.setError(getString(R.string.invalid_phone_msg));
                 phoneNumber.requestFocus();
                 return;

@@ -41,7 +41,6 @@ public class RegisterScreenActivity extends AppCompatActivity {
 
 
         create.setOnClickListener(view -> {
-
             // check if the user has already registered
             if (PreferenceManager.hasAccount()){
                 Toast.makeText(this,"Account already exist. Please proceed and log in",Toast.LENGTH_SHORT).show();
@@ -59,7 +58,7 @@ public class RegisterScreenActivity extends AppCompatActivity {
                 phoneNumber.requestFocus();
                 return;
             }
-            else if(Utils.isPhoneNoValid(phone)){
+            else if(!Utils.isValidPhoneNumber(phone)){
                 phoneNumberInputLayout.setError(getString(R.string.invalid_phone_msg));
                 phoneNumber.requestFocus();
                 return;
@@ -73,7 +72,8 @@ public class RegisterScreenActivity extends AppCompatActivity {
                 passwordInputLayout.setError(getString(R.string.invalid_pwd_msg));
                 passwordInput.requestFocus();
                 return;
-            } else {
+            }
+            else {
                 passwordInputLayout.setError(null);
             }
 
@@ -81,7 +81,8 @@ public class RegisterScreenActivity extends AppCompatActivity {
                 confirmPasswordInputLayout.setError(getString(R.string.invalid_pwd_match));
                 confirmPassword.requestFocus();
                 return;
-            } else {
+            }
+            else {
                 confirmPasswordInputLayout.setError(null);
             }
             // save account

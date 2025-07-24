@@ -1,7 +1,7 @@
 package com.aquarech.farmer.utils;
 
 public class Utils {
-    public static boolean isPhoneNoValid(String phoneNumber){
+    public static boolean isValidPhoneNumber(String phoneNumber){
         if(phoneNumber == null)
             return false;
 
