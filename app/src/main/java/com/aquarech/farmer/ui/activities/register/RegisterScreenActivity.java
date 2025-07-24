@@ -53,7 +53,7 @@ public class RegisterScreenActivity extends AppCompatActivity {
             String confirmPwd = Objects.toString(confirmPassword.getText(),"").trim();
 
             // validate phone number
-            if(phone.isEmpty()){
+            if(phoneNumber.getEditableText().toString().isEmpty()){
                 phoneNumberInputLayout.setError(getString(R.string.input_err_msg));
                 phoneNumber.requestFocus();
                 return;
@@ -65,6 +65,16 @@ public class RegisterScreenActivity extends AppCompatActivity {
             }
             else{
                 phoneNumberInputLayout.setError(null);
+            }
+
+            // empty password validation
+            if(passwordInput.getEditableText().toString().isEmpty()){
+                passwordInputLayout.setError(getString(R.string.input_err_msg));
+                passwordInput.requestFocus();
+                return;
+            }
+            else{
+                passwordInputLayout.setError(null);
             }
 
             // validate password
