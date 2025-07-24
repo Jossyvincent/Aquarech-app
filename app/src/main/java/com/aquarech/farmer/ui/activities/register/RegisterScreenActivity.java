@@ -39,13 +39,16 @@ public class RegisterScreenActivity extends AppCompatActivity {
         passwordInputLayout = findViewById(R.id.password_layout);
         confirmPasswordInputLayout = findViewById(R.id.confirm_password_layout);
 
-        // check if the user has already registered
-        if (PreferenceManager.hasAccount()){
-            Toast.makeText(this,"Account already exist. Please proceed and log in",Toast.LENGTH_SHORT).show();
-            startActivity(new Intent(this, LoginScreenActivity.class));
-            finish();
-        }
+
         create.setOnClickListener(view -> {
+
+            // check if the user has already registered
+            if (PreferenceManager.hasAccount()){
+                Toast.makeText(this,"Account already exist. Please proceed and log in",Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(this, LoginScreenActivity.class));
+                finish();
+                return;
+            }
             String phone = Objects.toString(phoneNumber.getText(), "");
             String password = Objects.toString(passwordInput.getText(),"");
             String confirmPwd = Objects.toString(confirmPassword.getText(),"");
@@ -64,9 +67,26 @@ public class RegisterScreenActivity extends AppCompatActivity {
             else{
                 phoneNumberInputLayout.setError(null);
             }
+
+            // validate password
+            if(password.length() < 8){
+                passwordInputLayout.setError(getString(R.string.invalid_pwd_msg));
+                passwordInput.requestFocus();
+                return;
+            } else {
+                passwordInputLayout.setError(null);
+            }
+
+            if (!password.equals(confirmPwd)){
+                confirmPasswordInputLayout.setError(getString(R.string.invalid_pwd_match));
+                confirmPassword.requestFocus();
+                return;
+            } else {
+                confirmPasswordInputLayout.setError(null);
+            }
             // save account
             PreferenceManager.saveAccount(phone,password);
-            Toast.makeText(this,"Account created successfully",Toast.LENGTH_SHORT).show();
+            Toast.makeText(this,getString(R.string.create_account_success_msg),Toast.LENGTH_SHORT).show();
 
             // proceed to log in
             startActivity(new Intent(this,LoginScreenActivity.class));

@@ -71,11 +71,7 @@ public class LoginScreenActivity extends AppCompatActivity {
                 password.requestFocus();
                 return;
             }
-            else if(pwd.length() < 8){
-                passwordInputLayout.setError(getString(R.string.invalid_pwd_msg));
-                password.requestFocus();
-                return;
-            }
+
             else {
                 passwordInputLayout.setError(null);
             }
