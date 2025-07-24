@@ -47,8 +47,8 @@ public class LoginScreenActivity extends AppCompatActivity {
 
         // button event listener
         signInBtn.setOnClickListener(view -> {
-            String phone = Objects.toString(phoneNumber.getText(), "");
-            String pwd = Objects.toString(password.getText(),"");
+            String phone = Objects.toString(phoneNumber.getText(), "").trim();
+            String pwd = Objects.toString(password.getText(),"").trim();
 
             // validate phone number
             if(phone.isEmpty()){

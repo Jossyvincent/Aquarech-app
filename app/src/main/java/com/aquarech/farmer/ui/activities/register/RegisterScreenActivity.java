@@ -48,9 +48,9 @@ public class RegisterScreenActivity extends AppCompatActivity {
                 finish();
                 return;
             }
-            String phone = Objects.toString(phoneNumber.getText(), "");
-            String password = Objects.toString(passwordInput.getText(),"");
-            String confirmPwd = Objects.toString(confirmPassword.getText(),"");
+            String phone = Objects.toString(phoneNumber.getText(), "").trim();
+            String password = Objects.toString(passwordInput.getText(),"").trim();
+            String confirmPwd = Objects.toString(confirmPassword.getText(),"").trim();
 
             // validate phone number
             if(phone.isEmpty()){
