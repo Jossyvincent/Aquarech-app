@@ -8,7 +8,7 @@ public class Config {
 
     // phone number regex pattern
     public static final Pattern KENYAN_PHONE_PATTERN = Pattern.compile(
-            "^(?:\\+254|254|0)?7\\d{8}$"
+            "^(?:\\+254|254|0)?7|1\\d{8}$"
     );
     // preferenceManager constants
       public static final String PREF_NAME = "aquarech_prefs";
