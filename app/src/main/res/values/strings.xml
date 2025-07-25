@@ -41,4 +41,6 @@
     <string name="invalid_pwd_msg">Password must be at least eight characters</string>
     <string name="invalid_pwd_match">Passwords do not match</string>
     <string name="create_account_success_msg">Account created successfully</string>
+
+    <string name="insert_error">Unable to insert record</string>
 </resources>
