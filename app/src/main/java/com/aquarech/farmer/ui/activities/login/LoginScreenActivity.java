@@ -4,12 +4,14 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Button;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatTextView;
 
 import com.aquarech.farmer.R;
+import com.aquarech.farmer.db.providers.UserProvider;
 import com.aquarech.farmer.ui.activities.register.RegisterScreenActivity;
 import com.aquarech.farmer.utils.Utils;
 import com.google.android.material.textfield.TextInputEditText;
@@ -76,7 +78,14 @@ public class LoginScreenActivity extends AppCompatActivity {
                 passwordInputLayout.setError(null);
             }
 
-            Log.d("all check", "passed");
+            if (UserProvider.isUserAuthenticated(this,phone,pwd)) {
+                Toast.makeText(this,"Login successful",Toast.LENGTH_SHORT).show();
+                // code to store log in stated in sharedPreference
+                startActivity(new Intent(this,HomeScreenActivity.class));
+                finish();
+            } else {
+                Toast.makeText(this,"Invalid phone number or password", Toast.LENGTH_SHORT).show();
+            }
         });
     }
 }

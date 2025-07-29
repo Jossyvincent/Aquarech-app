@@ -20,7 +20,7 @@ public class Config {
 
     // user table constants
     public static final String TABLE_USERS = "users";
-    public static final String COLUMN_USER_ID = "id";
+    public static final String COLUMN_USER_ID = "_id";
     public static final String COLUMN_PHONE = "phone";
     public static final String COLUMN_PASSWORD = "password";
 

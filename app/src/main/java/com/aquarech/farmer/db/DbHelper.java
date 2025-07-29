@@ -8,6 +8,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.database.sqlite.SQLiteQueryBuilder;
 
 import com.aquarech.farmer.R;
+import com.aquarech.farmer.db.providers.UserProvider;
 import com.aquarech.farmer.utils.Config;
 
 import java.sql.SQLException;
@@ -95,5 +96,4 @@ public class DbHelper extends SQLiteOpenHelper {
             return getWritableDatabase().update(tableName, values, "_id = ?", new String[]{id});
         }
     }
-
 }

@@ -7,6 +7,7 @@ import android.content.Context;
 import android.content.UriMatcher;
 import android.database.Cursor;
 import android.net.Uri;
+import android.util.Log;
 
 import com.aquarech.farmer.db.DbHelper;
 import com.aquarech.farmer.utils.Config;
@@ -97,5 +98,28 @@ public class UserProvider extends ContentProvider {
         }
 
         return database.updateDataInTable(id, values, Config.TABLE_USERS);
+    }
+
+    // method to check if user is already registered in the database
+    public static boolean isUserRegistered(Context context, String phone){
+        String selection = Config.COLUMN_PHONE + " = ?";
+        String[] selectionArgs = { phone };
+        Cursor cursor = context.getContentResolver().query(USER_CONTENT_URI,null,selection,selectionArgs,null);
+        boolean isRegistered =cursor != null && cursor.getCount() > 0;
+        if (cursor != null){
+            cursor.close();
+        }
+        return isRegistered;
+    }
+    // method to check if the user exists in the database and is authenticated
+    public static boolean isUserAuthenticated(Context context,String phone, String password){
+        String selection = Config.COLUMN_PHONE + "= ? AND " + Config.COLUMN_PASSWORD + "= ?";
+        String[] selectionArgs = { phone, password };
+        Cursor cursor = context.getContentResolver().query(USER_CONTENT_URI,new String[]{Config.COLUMN_PHONE},selection,selectionArgs,null);
+        boolean isAuthenticated = cursor != null && cursor.getCount() > 0;
+        if(cursor != null) {
+            cursor.close();
+        }
+        return isAuthenticated;
     }
 }

@@ -1,6 +1,8 @@
 package com.aquarech.farmer.ui.activities.register;
 
+import android.content.ContentValues;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.Toast;
@@ -9,12 +11,14 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatTextView;
 
 import com.aquarech.farmer.R;
-import com.aquarech.farmer.app.PreferenceManager;
+import com.aquarech.farmer.db.providers.UserProvider;
 import com.aquarech.farmer.ui.activities.login.LoginScreenActivity;
+import com.aquarech.farmer.utils.Config;
 import com.aquarech.farmer.utils.Utils;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 
+import java.net.URI;
 import java.util.Objects;
 
 public class RegisterScreenActivity extends AppCompatActivity {
@@ -41,17 +45,18 @@ public class RegisterScreenActivity extends AppCompatActivity {
 
 
         create.setOnClickListener(view -> {
-            // check if the user has already registered
-            if (PreferenceManager.hasAccount()){
+            // get user input
+            String phone = Objects.toString(phoneNumber.getText(), "").trim();
+            String password = Objects.toString(passwordInput.getText(),"").trim();
+            String confirmPwd = Objects.toString(confirmPassword.getText(),"").trim();
+
+            // check if the user has already registered in database
+            if (UserProvider.isUserRegistered(this,phone)){
                 Toast.makeText(this,"Account already exist. Please proceed and log in",Toast.LENGTH_SHORT).show();
                 startActivity(new Intent(this, LoginScreenActivity.class));
                 finish();
                 return;
             }
-            String phone = Objects.toString(phoneNumber.getText(), "").trim();
-            String password = Objects.toString(passwordInput.getText(),"").trim();
-            String confirmPwd = Objects.toString(confirmPassword.getText(),"").trim();
-
             // validate phone number
             if(phoneNumber.getEditableText().toString().isEmpty()){
                 phoneNumberInputLayout.setError(getString(R.string.input_err_msg));
@@ -95,13 +100,23 @@ public class RegisterScreenActivity extends AppCompatActivity {
             else {
                 confirmPasswordInputLayout.setError(null);
             }
-            // save account
-            PreferenceManager.saveAccount(phone,password);
-            Toast.makeText(this,getString(R.string.create_account_success_msg),Toast.LENGTH_SHORT).show();
+            // removed the code to save the account to SharedPreferences
 
-            // proceed to log in
-            startActivity(new Intent(this,LoginScreenActivity.class));
+            // Create ContentValues to hold user data
+            ContentValues values = new ContentValues();
+            values.put(Config.COLUMN_PHONE, phone);
+            values.put(Config.COLUMN_PASSWORD, password);
 
+            try {
+                Uri uri = getContentResolver().insert(UserProvider.USER_CONTENT_URI, values);
+                if (uri != null) {
+                    Toast.makeText(this, "User Registered Successfuly!", Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(this,"Registration failed", Toast.LENGTH_SHORT).show();
+                }
+            } catch (Exception e) {
+                Toast.makeText(this, "Error: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+            }
         });
 
 
