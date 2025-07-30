@@ -52,7 +52,7 @@ public class RegisterScreenActivity extends AppCompatActivity {
 
             // check if the user has already registered in database
             if (UserProvider.isUserRegistered(this,phone)){
-                Toast.makeText(this,"Account already exist. Please proceed and log in",Toast.LENGTH_SHORT).show();
+                Toast.makeText(this,getString(R.string.account_registered_msg),Toast.LENGTH_SHORT).show();
                 startActivity(new Intent(this, LoginScreenActivity.class));
                 finish();
                 return;
@@ -110,9 +110,11 @@ public class RegisterScreenActivity extends AppCompatActivity {
             try {
                 Uri uri = getContentResolver().insert(UserProvider.USER_CONTENT_URI, values);
                 if (uri != null) {
-                    Toast.makeText(this, "User Registered Successfuly!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this, getString(R.string.registration_successful_msg), Toast.LENGTH_SHORT).show();
+                    startActivity(new Intent(this,LoginScreenActivity.class));
+                    finish();
                 } else {
-                    Toast.makeText(this,"Registration failed", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this,getString(R.string.registration_failed_msg), Toast.LENGTH_SHORT).show();
                 }
             } catch (Exception e) {
                 Toast.makeText(this, "Error: " + e.getMessage(), Toast.LENGTH_SHORT).show();

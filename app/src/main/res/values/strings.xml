@@ -43,4 +43,12 @@
     <string name="create_account_success_msg">Account created successfully</string>
 
     <string name="insert_error">Unable to insert record</string>
+
+    <string name="account_registered_msg">Account already exist. Please proceed and log in</string>
+    <string name="registration_successful_msg">User Registered Successfully</string>
+    <string name="registration_failed_msg">Registration failed</string>
+    <string name="login_success">Login successful</string>
+    <string name="pwd_update_msg">Password updated successfully!</string>
+    <string name="pwd_failed_update_msg">Failed to update password</string>
+
 </resources>

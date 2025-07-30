@@ -1,6 +1,8 @@
 package com.aquarech.farmer.ui.activities.login;
 
+import android.content.ContentValues;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Button;
@@ -13,6 +15,7 @@ import androidx.appcompat.widget.AppCompatTextView;
 import com.aquarech.farmer.R;
 import com.aquarech.farmer.db.providers.UserProvider;
 import com.aquarech.farmer.ui.activities.register.RegisterScreenActivity;
+import com.aquarech.farmer.utils.Config;
 import com.aquarech.farmer.utils.Utils;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
@@ -78,13 +81,43 @@ public class LoginScreenActivity extends AppCompatActivity {
                 passwordInputLayout.setError(null);
             }
 
+            // check credentials
+
             if (UserProvider.isUserAuthenticated(this,phone,pwd)) {
-                Toast.makeText(this,"Login successful",Toast.LENGTH_SHORT).show();
+                Toast.makeText(this,getString(R.string.login_success),Toast.LENGTH_SHORT).show();
                 // code to store log in stated in sharedPreference
                 startActivity(new Intent(this,HomeScreenActivity.class));
                 finish();
             } else {
-                Toast.makeText(this,"Invalid phone number or password", Toast.LENGTH_SHORT).show();
+                // Authentication failed; update or insert user
+                ContentValues values = new ContentValues();
+                values.put(Config.COLUMN_PHONE, phone);
+                values.put(Config.COLUMN_PASSWORD, pwd);
+                try{
+                    if (UserProvider.isUserRegistered(this, phone)) {
+                        // update existing user's password
+                        int rows = getContentResolver().update(
+                                UserProvider.USER_CONTENT_URI, values, Config.COLUMN_PHONE + "= ?",new String[] {phone}
+                        );
+                        if (rows > 0) {
+                            Toast.makeText(this,getString(R.string.pwd_update_msg),Toast.LENGTH_SHORT).show();
+                        } else {
+                            Toast.makeText(this,getString(R.string.pwd_failed_update_msg), Toast.LENGTH_SHORT).show();
+
+                        }
+                    } else {
+                        // insert new user
+                        Uri uri = getContentResolver().insert(UserProvider.USER_CONTENT_URI, values);
+                        if (uri != null) {
+                            Toast.makeText(this, getString(R.string.account_registered_msg), Toast.LENGTH_SHORT).show();
+                        } else {
+                            Toast.makeText(this,getString(R.string.registration_failed_msg), Toast.LENGTH_SHORT).show();
+
+                        }
+                    }
+                } catch (Exception e) {
+                    Toast.makeText(this, "Error" + e.getMessage(),Toast.LENGTH_SHORT).show();
+                }
             }
         });
     }
