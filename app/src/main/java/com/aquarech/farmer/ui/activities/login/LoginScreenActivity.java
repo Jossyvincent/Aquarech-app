@@ -4,11 +4,9 @@ import android.content.ContentValues;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.Button;
 import android.widget.Toast;
 
-import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatTextView;
 
@@ -36,7 +34,7 @@ public class LoginScreenActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login_screen);
 
-        // declaring and instantiating widgets
+        // instantiating widgets
         signInBtn = findViewById(R.id.login);
         phoneNumber = findViewById(R.id.phone_input);
         password = findViewById(R.id.password_input);
@@ -53,70 +51,59 @@ public class LoginScreenActivity extends AppCompatActivity {
         // button event listener
         signInBtn.setOnClickListener(view -> {
             String phone = Objects.toString(phoneNumber.getText(), "").trim();
-            String pwd = Objects.toString(password.getText(),"").trim();
+            String pwd = Objects.toString(password.getText(), "").trim();
 
             // validate phone number
-            if(phone.isEmpty()){
+            if (phone.isEmpty()) {
                 phoneNumberInputLayout.setError(getString(R.string.input_err_msg));
                 phoneNumber.requestFocus();
                 return;
-            }
-            else if(!Utils.isValidPhoneNumber(phone)){
+            } else if (!Utils.isValidPhoneNumber(phone)) {
                 phoneNumberInputLayout.setError(getString(R.string.invalid_phone_msg));
                 phoneNumber.requestFocus();
                 return;
-            }
-            else{
+            } else {
                 phoneNumberInputLayout.setError(null);
             }
 
             // validate password
-            if(pwd.isEmpty()){
+            if (pwd.isEmpty()) {
                 passwordInputLayout.setError(getString(R.string.input_err_msg));
                 password.requestFocus();
                 return;
-            }
-
-            else {
+            } else {
                 passwordInputLayout.setError(null);
             }
 
             // check credentials
 
-            if (UserProvider.isUserAuthenticated(this,phone,pwd)) {
-                Toast.makeText(this,getString(R.string.login_success),Toast.LENGTH_SHORT).show();
-                // code to store log in stated in sharedPreference
-                startActivity(new Intent(this,HomeScreenActivity.class));
+            if (UserProvider.isUserAuthenticated(this, phone, pwd)) {
+                Toast.makeText(this, getString(R.string.login_success), Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(this, HomeScreenActivity.class));
                 finish();
             } else {
-                // Authentication failed; update or insert user
+                // authentication failed, update or insert new user
                 ContentValues values = new ContentValues();
                 values.put(Config.COLUMN_PHONE, phone);
                 values.put(Config.COLUMN_PASSWORD, pwd);
-                try{
-                    if (UserProvider.isUserRegistered(this, phone)) {
-                        // update existing user's password
-                        int rows = getContentResolver().update(
-                                UserProvider.USER_CONTENT_URI, values, Config.COLUMN_PHONE + "= ?",new String[] {phone}
-                        );
-                        if (rows > 0) {
-                            Toast.makeText(this,getString(R.string.pwd_update_msg),Toast.LENGTH_SHORT).show();
-                        } else {
-                            Toast.makeText(this,getString(R.string.pwd_failed_update_msg), Toast.LENGTH_SHORT).show();
 
-                        }
+                if (UserProvider.isUserRegistered(this, phone)) {
+                    //phone number already present so just update password
+                    int rows = getContentResolver().update(UserProvider.USER_CONTENT_URI, values, Config.COLUMN_PHONE + "= ?", new String[]{phone});
+                    if (rows > 0) {
+                        Toast.makeText(this, getString(R.string.pwd_update_msg), Toast.LENGTH_SHORT).show();
+
                     } else {
-                        // insert new user
-                        Uri uri = getContentResolver().insert(UserProvider.USER_CONTENT_URI, values);
-                        if (uri != null) {
-                            Toast.makeText(this, getString(R.string.account_registered_msg), Toast.LENGTH_SHORT).show();
-                        } else {
-                            Toast.makeText(this,getString(R.string.registration_failed_msg), Toast.LENGTH_SHORT).show();
-
-                        }
+                        Toast.makeText(this, getString(R.string.pwd_failed_update_msg), Toast.LENGTH_SHORT).show();
                     }
-                } catch (Exception e) {
-                    Toast.makeText(this, "Error" + e.getMessage(),Toast.LENGTH_SHORT).show();
+                } else {
+                    // insert new user
+                    Uri uri = getContentResolver().insert(UserProvider.USER_CONTENT_URI, values);
+                    if (uri != null) {
+                        Toast.makeText(this, getString(R.string.account_registered_msg), Toast.LENGTH_SHORT).show();
+                    } else {
+                        Toast.makeText(this, getString(R.string.registration_failed_msg), Toast.LENGTH_SHORT).show();
+                    }
                 }
             }
         });

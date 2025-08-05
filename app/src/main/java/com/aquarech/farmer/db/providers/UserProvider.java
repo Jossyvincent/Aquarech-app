@@ -19,10 +19,7 @@ public class UserProvider extends ContentProvider {
     public static final String USER_PROVIDER_NAME = "com.aquarech.farmer.db.providers.UserProvider";
     public static final Uri USER_CONTENT_URI = Uri.parse("content://" + USER_PROVIDER_NAME + "/useritems");
 
-    public static final String[] USER_PROJECTION = {
-            Config.COLUMN_USER_ID,
-            Config.COLUMN_PHONE,
-            Config.COLUMN_PASSWORD
+    public static final String[] USER_PROJECTION = {Config.COLUMN_USER_ID, Config.COLUMN_PHONE, Config.COLUMN_PASSWORD
 
     };
 
@@ -101,23 +98,24 @@ public class UserProvider extends ContentProvider {
     }
 
     // method to check if user is already registered in the database
-    public static boolean isUserRegistered(Context context, String phone){
+    public static boolean isUserRegistered(Context context, String phone) {
         String selection = Config.COLUMN_PHONE + " = ?";
-        String[] selectionArgs = { phone };
-        Cursor cursor = context.getContentResolver().query(USER_CONTENT_URI,null,selection,selectionArgs,null);
-        boolean isRegistered =cursor != null && cursor.getCount() > 0;
-        if (cursor != null){
+        String[] selectionArgs = {phone};
+        Cursor cursor = context.getContentResolver().query(USER_CONTENT_URI, null, selection, selectionArgs, null);
+        boolean isRegistered = cursor != null && cursor.getCount() > 0;
+        if (cursor != null) {
             cursor.close();
         }
         return isRegistered;
     }
+
     // method to check if the user exists in the database and is authenticated
-    public static boolean isUserAuthenticated(Context context,String phone, String password){
+    public static boolean isUserAuthenticated(Context context, String phone, String password) {
         String selection = Config.COLUMN_PHONE + "= ? AND " + Config.COLUMN_PASSWORD + "= ?";
-        String[] selectionArgs = { phone, password };
-        Cursor cursor = context.getContentResolver().query(USER_CONTENT_URI,new String[]{Config.COLUMN_PHONE},selection,selectionArgs,null);
+        String[] selectionArgs = {phone, password};
+        Cursor cursor = context.getContentResolver().query(USER_CONTENT_URI, new String[]{Config.COLUMN_PHONE}, selection, selectionArgs, null);
         boolean isAuthenticated = cursor != null && cursor.getCount() > 0;
-        if(cursor != null) {
+        if (cursor != null) {
             cursor.close();
         }
         return isAuthenticated;
