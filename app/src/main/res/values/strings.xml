@@ -51,4 +51,8 @@
     <string name="pwd_update_msg">Password updated successfully!</string>
     <string name="pwd_failed_update_msg">Failed to update password</string>
 
+    <string name="user_deleted_msg">user deleted successfully</string>
+    <string name="delete_failed_msg">user not found or delete failed</string>
+    <string name="request_delete_confirmation">Are you sure you want delete this user</string>
+
 </resources>

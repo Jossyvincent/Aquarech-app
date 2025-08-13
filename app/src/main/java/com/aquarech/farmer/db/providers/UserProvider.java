@@ -120,4 +120,11 @@ public class UserProvider extends ContentProvider {
         }
         return isAuthenticated;
     }
+    // method to delete user details from the db
+    public static boolean deleteUser(Context context, String phone){
+        String selection = Config.COLUMN_PHONE + "= ?";
+        String[] selectionArgs = {phone};
+        int rowsDeleted = context.getContentResolver().delete(USER_CONTENT_URI,selection,selectionArgs);
+        return rowsDeleted > 0;
+    }
 }
