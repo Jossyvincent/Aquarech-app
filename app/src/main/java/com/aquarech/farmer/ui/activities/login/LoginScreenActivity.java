@@ -75,7 +75,8 @@ public class LoginScreenActivity extends AppCompatActivity {
             } else {
                 passwordInputLayout.setError(null);
             }
-            new AlertDialog.Builder(this).setTitle("Delete user").setMessage(getString(R.string.request_delete_confirmation))
+          // these lines were for testing the Delete in CRUD
+         /* new AlertDialog.Builder(this).setTitle("Delete user").setMessage(getString(R.string.request_delete_confirmation))
                     .setPositiveButton("Yes", (dialog, which) -> {
                         if (UserProvider.deleteUser(this, phone)) {
                             Toast.makeText(this, getString(R.string.user_deleted_msg), Toast.LENGTH_SHORT).show();
@@ -83,11 +84,11 @@ public class LoginScreenActivity extends AppCompatActivity {
                             Toast.makeText(this, getString(R.string.delete_failed_msg), Toast.LENGTH_SHORT).show();
                         }
                     }).setNegativeButton("No", (dialog,which) -> dialog.dismiss()).show();
-        });
+        }); */
 
         // check credentials
 
-            /* if (UserProvider.isUserAuthenticated(this, phone, pwd)) {
+             if (UserProvider.isUserAuthenticated(this, phone, pwd)) {
                 Toast.makeText(this, getString(R.string.login_success), Toast.LENGTH_SHORT).show();
                 startActivity(new Intent(this, HomeScreenActivity.class));
                 finish();
@@ -116,6 +117,6 @@ public class LoginScreenActivity extends AppCompatActivity {
                     }
                 }
             }
-        }); */
+        });
     }
 }
